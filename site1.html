@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IGREJA EVANGÉLICA CRISTO VIVE</title>
+  <!-- Font Awesome para ícones profissionais modernos -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Configurações Gerais */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-size: 16px;
+      color: #f4f6f9;
+      background-image: linear-gradient(rgba(10, 25, 47, 0.85), rgba(10, 25, 47, 0.9)), url('JASS.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: #64ffda;
+      transition: color 0.3s ease;
+    }
+
+    /* Barra de Navegação */
+    nav {
+      background: #0a192f;
+      padding: 0 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 70px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    nav .logo {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #ffffff;
+      letter-spacing: 1px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 24px;
+    }
+
+    nav ul li a {
+      color: #a8b2d1;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    nav ul li a:hover {
+      color: #00d2ff;
+    }
+
+    nav .btn-nav {
+      background: #00d2ff;
+      /* Alterado para o azul do tema */
+      color: #0a192f;
+      /* Cor escura para excelente contraste */
+      padding: 8px 20px;
+      border-radius: 4px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    nav .btn-nav i {
+      font-size: 1.1rem;
+    }
+
+    nav .btn-nav:hover {
+      background: #00a8cc;
+      /* Azul mais escuro para o efeito hover */
+      transform: translateY(-1px);
+    }
+
+    /* Menu Responsivo */
+    .menu-toggle,
+    .menu-icon {
+      display: none;
+    }
+
+    /* Header / Banner Principal */
+    header {
+      text-align: center;
+      padding: 80px 20px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    header .badge {
+      display: inline-block;
+      background: rgba(0, 210, 253, 0.1);
+      color: #00d2ff;
+      border: 1px solid #00d2ff;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 24px;
+      letter-spacing: 1px;
+    }
+
+    header h1 {
+      font-size: 2.8rem;
+      font-weight: 800;
+      margin-bottom: 20px;
+      line-height: 1.2;
+      color: #ffffff;
+    }
+
+    header h1 span {
+      color: #00d2ff;
+    }
+
+    header p.versiculo {
+      font-size: 1.1rem;
+      color: #ccd6f6;
+      font-style: italic;
+      margin-bottom: 30px;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 20px;
+      border-radius: 8px;
+      border-left: 4px solid #00d2ff;
+    }
+
+    /* Botões */
+    .btn-primary {
+      background: #00d2ff;
+      color: #0a192f;
+      padding: 12px 28px;
+      border-radius: 4px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      border: none;
+      transition: transform 0.2s, background 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-primary:hover {
+      background: #00a8cc;
+      transform: translateY(-2px);
+    }
+
+    /* Estilo do botão de Whatsapp no corpo da página (agora em Azul) */
+    .btn-whatsapp-body {
+      background: #00d2ff;
+      /* Alterado para o azul do tema */
+      color: #0a192f;
+    }
+
+    .btn-whatsapp-body:hover {
+      background: #00a8cc;
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: #00d2ff;
+      border: 1px solid #00d2ff;
+      padding: 12px 28px;
+      border-radius: 4px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(0, 210, 253, 0.1);
+    }
+
+    .btn-group {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    /* ÍCONE FLUTUANTE DO WHATSAPP (Mantido em verde para destaque) */
+    .whatsapp-float {
+      position: fixed;
+      width: 60px;
+      height: 60px;
+      bottom: 40px;
+      right: 40px;
+      background-color: #25d366;
+      color: #fff;
+      border-radius: 50px;
+      text-align: center;
+      font-size: 30px;
+      box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.4);
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease-in-out;
+      animation: pulse 2s infinite;
+    }
+
+    .whatsapp-float:hover {
+      background-color: #128c7e;
+      transform: scale(1.15) rotate(10deg);
+      color: #fff;
+    }
+
+    /* Animação de pulsação suave para chamar a atenção */
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5);
+      }
+
+      70% {
+        box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+      }
+
+      100% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+      }
+    }
+
+    /* Conteúdo Principal (Grid) */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px;
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 40px;
+    }
+
+    /* Barra Lateral (Agenda e Informações Rápidas) */
+    aside {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+      height: fit-content;
+    }
+
+    .aside-box {
+      background: rgba(17, 34, 64, 0.9);
+      border-radius: 8px;
+      padding: 24px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    aside h2 {
+      font-size: 1.2rem;
+      color: #00d2ff;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #00d2ff;
+      padding-bottom: 8px;
+    }
+
+    .agenda-itens p {
+      margin-bottom: 12px;
+      font-size: 0.95rem;
+      color: #ccd6f6;
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+    }
+
+    .agenda-itens i {
+      color: #00d2ff;
+      font-size: 0.8rem;
+    }
+
+    /* Seções do Main */
+    main section {
+      margin-bottom: 50px;
+    }
+
+    main .section-title {
+      font-size: 2rem;
+      color: #ffffff;
+      margin-bottom: 15px;
+    }
+
+    main .section-sub {
+      color: #a8b2d1;
+      margin-bottom: 24px;
+      font-size: 1.05rem;
+    }
+
+    main .main-title {
+      font-size: 1.5rem;
+      color: #00d2ff;
+      margin-bottom: 20px;
+    }
+
+    /* Cards de Atividades */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: rgba(17, 34, 64, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 8px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      padding: 20px;
+      gap: 15px;
+      transition: transform 0.3s, border-color 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      border-color: #00d2ff;
+    }
+
+    .card-thumb {
+      font-size: 2rem;
+      color: #00d2ff;
+      background: rgba(0, 210, 253, 0.1);
+      padding: 12px;
+      border-radius: 50%;
+      width: 55px;
+      height: 55px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card-body h4 {
+      color: #ffffff;
+      margin-bottom: 5px;
+    }
+
+    .card-body p {
+      color: #a8b2d1;
+      font-size: 0.9rem;
+    }
+
+    /* Formulário de Oração */
+    .prayer-form input,
+    .prayer-form textarea {
+      width: 100%;
+      padding: 12px;
+      background: rgba(10, 25, 47, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #fff;
+      border-radius: 4px;
+      margin-bottom: 15px;
+      font-family: inherit;
+    }
+
+    .prayer-form input:focus,
+    .prayer-form textarea:focus {
+      outline: none;
+      border-color: #00d2ff;
+    }
+
+    /* Box de Doações estruturado */
+    .donation-info p {
+      font-size: 0.9rem;
+      margin-bottom: 8px;
+      color: #ccd6f6;
+    }
+
+    /* Responsividade do Mapa incorporado */
+    .map-container {
+      position: relative;
+      padding-bottom: 56.25%;
+      /* Proporção 16:9 */
+      height: 0;
+      overflow: hidden;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .map-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    /* Rodapé */
+    footer {
+      background: #020c1b;
+      color: #8892b0;
+      padding: 60px 20px 20px;
+      margin-top: 60px;
+    }
+
+    footer .footer-grid {
+      max-width: 1200px;
+      margin: 0 auto 40px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 40px;
+    }
+
+    footer h4 {
+      color: #ffffff;
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+    }
+
+    footer ul {
+      list-style: none;
+    }
+
+    footer ul li {
+      margin-bottom: 10px;
+    }
+
+    footer ul li a {
+      color: #8892b0;
+      font-size: 0.9rem;
+    }
+
+    footer ul li a:hover {
+      color: #00d2ff;
+    }
+
+    footer .divider {
+      border: none;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      margin-bottom: 20px;
+    }
+
+    footer .copy {
+      text-align: center;
+      font-size: 0.85rem;
+      color: #495670;
+    }
+
+    /* Media Queries */
+    @media (max-width: 768px) {
+      .container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      header h1 {
+        font-size: 2rem;
+      }
+
+      nav ul {
+        position: absolute;
+        top: 70px;
+        left: -100%;
+        flex-direction: column;
+        background: #0a192f;
+        width: 100%;
+        height: calc(100vh - 70px);
+        text-align: center;
+        padding-top: 40px;
+        transition: all 0.3s ease;
+        gap: 30px;
+      }
+
+      nav ul li a {
+        font-size: 1.2rem;
+      }
+
+      .menu-icon {
+        display: block;
+        color: #ffffff;
+        font-size: 1.8rem;
+        cursor: pointer;
+      }
+
+      .menu-toggle:checked~ul {
+        left: 0;
+      }
+
+      nav .btn-nav {
+        display: none;
+      }
+
+      /* Ajuste menor do botão de WhatsApp em telemóveis para não tapar conteúdo útil */
+      .whatsapp-float {
+        width: 50px;
+        height: 50px;
+        bottom: 20px;
+        right: 20px;
+        font-size: 25px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <div class="logo">MISSÃO APOSTÓLICA <span style="color: #00d2ff">DA GRAÇA DE DEUS</span></div>
+    <input type="checkbox" id="menu-toggle" class="menu-toggle">
+    <label for="menu-toggle" class="menu-icon">&#9776;</label>
+    <ul>
+      <li><a href="#sobre">VISITE</a></li>
+      <li><a href="#atividades">ATIVIDADES</a></li>
+      <li><a href="#oracao">PEDIDO DE ORAÇÃO</a></li>
+      <li><a href="#localizacao">LOCALIZAÇÃO</a></li>
+    </ul>
+    <a href="https://wa.me/258872062193" target="_blank" class="btn-nav"><i class="fab fa-whatsapp"></i> CONTATO</a>
+  </nav>
+
+  <!-- Botão Flutuante do WhatsApp que segue o utilizador (Permanece verde) -->
+  <a href="https://wa.me/258872062193" class="whatsapp-float" target="_blank" rel="noopener noreferrer"
+    title="Fale connosco no WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <header>
+    <div class="badge">47 ANOS ANUNCIANDO O EVANGELHO DA GRAÇA DE DEUS ÀS NAÇÕES</div>
+    <h1>IGREJA EVANGÉLICA<br> <span>CRISTO VIVE<br>MAPUTO</span></h1>
+    <p class="versiculo">"Porque pela graça sois salvos, mediante a fé; e isto não vem de vós, é dom de Deus; não de
+      obras, para que ninguém se glorie." <br><strong>Efésios 2:8-9</strong></p>
+    <div class="btn-group">
+      <a href="#sobre" class="btn-primary">Saber Mais <i class="fas fa-arrow-down"></i></a>
+      <a href="https://web.facebook.com/profile.php?id=100083742211805" target="_blank" class="btn-secondary"><i
+          class="fab fa-facebook-f"></i> Assistir Online</a>
+    </div>
+  </header>
+
+  <div class="container">
+    <aside>
+      <!-- Bloco 1: Agenda -->
+      <div class="aside-box">
+        <h2><i class="far fa-calendar-alt"></i> Agenda da Igreja</h2>
+        <div class="agenda-itens">
+          <p><i class="fas fa-chevron-right"></i> <strong>Domingo:</strong> 09:30 (Culto Dominical)</p>
+          <p><i class="fas fa-chevron-right"></i> <strong>Segunda:</strong> 17:00 (Oração e Intercessão)</p>
+          <p><i class="fas fa-chevron-right"></i> <strong>Quarta:</strong> 17:00 (Estudo da Palavra)</p>
+          <p><i class="fas fa-chevron-right"></i> <strong>Sábado:</strong> 09:00 (Culto Jovem)</p>
+        </div>
+      </div>
+
+      <!-- Bloco 2: Contribuições Finanças -->
+      <div class="aside-box">
+        <h2><i class="fas fa-heart"></i> Dízimos e Ofertas</h2>
+        <div class="donation-info">
+          <p>Contribua para a expansão do Reino de Deus.</p>
+          <p><strong>Banco:</strong> Nome do Banco</p>
+          <p><strong>Conta:</strong> 123456789</p>
+          <p><strong>NIB/IBAN:</strong> 0000 0000 0000 0000</p>
+          <p><strong>M-Pesa / E-Mola:</strong> +258 87 206 2193</p>
+        </div>
+      </div>
+    </aside>
+
+    <main>
+      <!-- Seção 1: Boas-vindas -->
+      <section id="sobre">
+        <h2 class="section-title">GRAÇA E PAZ! BEM-VINDO</h2>
+        <p class="section-sub">
+          Nossa igreja é um Ministério de ensino da Palavra de Deus, onde as pessoas aprendem
+          a conhecer o Verdadeiro, Soberano e Eterno Deus, como também, a confessar a Sua Palavra, chamando à
+          existência coisas que não são como se já fossem, e a viver por Fé, descansando em Suas promessas.
+        </p>
+        <!-- O botão abaixo agora é azul para seguir as suas diretrizes -->
+        <a href="https://wa.me/258872062193" target="_blank" class="btn-primary btn-whatsapp-body"><i
+            class="fab fa-whatsapp"></i> Fale Conosco no WhatsApp</a>
+      </section>
+
+      <!-- Seção 2: Atividades -->
+      <section id="atividades">
+        <h2 class="main-title">Atividades em Destaque</h2>
+        <div class="cards">
+          <div class="card">
+            <div class="card-thumb"><i class="fas fa-hands-praying"></i></div>
+            <div class="card-body">
+              <h4>Vida Espiritual</h4>
+              <p>Crescer na graça e no conhecimento bíblico.</p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-thumb"><i class="fas fa-music"></i></div>
+            <div class="card-body">
+              <h4>Grupo Coral</h4>
+              <p>Adore o SENHOR com hinos de louvor genuínos.</p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-thumb"><i class="fas fa-hand-holding-heart"></i></div>
+            <div class="card-body">
+              <h4>Ação Social</h4>
+              <p>Apoio às famílias e comunidades necessitadas de Maputo.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Seção 3: Formulário Interativo de Oração -->
+      <section id="oracao">
+        <h2 class="main-title">Precisa de Oração?</h2>
+        <p style="color: #a8b2d1; margin-bottom: 15px;">Coloque o seu nome e o seu motivo. A nossa equipa de intercessão
+          estará a orar por si.</p>
+        <form class="prayer-form" onsubmit="alert('Pedido enviado com sucesso! Deus te abençoe.'); return false;">
+          <input type="text" placeholder="Seu Nome (Opcional)" />
+          <textarea rows="4" placeholder="Escreva aqui o seu pedido de oração..." required></textarea>
+          <button type="submit" class="btn-primary">Enviar Pedido</button>
+        </form>
+      </section>
+
+      <!-- Seção 4: Localização Dinâmica -->
+      <section id="localizacao">
+        <h2 class="main-title">Onde Estamos</h2>
+        <p style="color: #a8b2d1; margin-bottom: 15px;">
+          <i class="fas fa-map-marker-alt" style="color: #00d2ff;"></i>
+          Coordenadas: 25°46'14.4"S 32°36'27.0"E — Maputo, Moçambique
+        </p>
+        <div class="map-container">
+          <iframe src="https://maps.google.com/maps?q=-25.770667,32.607500&hl=pt&z=16&output=embed" allowfullscreen=""
+            loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <h4>Sobre a Cristo Vive</h4>
+        <ul>
+          <li><a href="#">Missão Apostólica</a></li>
+          <li><a href="#">Nossa igreja</a></li>
+          <li><a href="#">Doutrina</a></li>
+          <li><a href="#">Trabalhos Sociais</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Família Apostólica</h4>
+        <ul>
+          <li><a href="#">Bispa Suzete Costanssa</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Links Úteis</h4>
+        <ul>
+          <li><a href="#oracao">Pedir Oração</a></li>
+          <li><a href="#localizacao">Como Chegar</a></li>
+          <li><a href="https://web.facebook.com/profile.php?id=100083742211805" target="_blank">Página do Facebook</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <hr class="divider">
+    <p class="copy">&copy; 2026 Igreja Evangélica Cristo Vive Maputo</p>
+  </footer>
+
+</body>
+
+</html>
